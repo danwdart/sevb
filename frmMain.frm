@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmMain 
+Begin VB.Form frmMain
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Silent Echoes WinSpy"
    ClientHeight    =   3240
@@ -13,7 +13,7 @@ Begin VB.Form frmMain
    ScaleHeight     =   3240
    ScaleWidth      =   7620
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton Command3 
+   Begin VB.CommandButton Command3
       Caption         =   "Exit"
       Height          =   375
       Left            =   3480
@@ -21,28 +21,28 @@ Begin VB.Form frmMain
       Top             =   2760
       Width           =   4095
    End
-   Begin VB.TextBox WNTKey 
+   Begin VB.TextBox WNTKey
       Height          =   285
       Left            =   3840
       TabIndex        =   5
       Top             =   600
       Width           =   3615
    End
-   Begin VB.TextBox W9xKey 
+   Begin VB.TextBox W9xKey
       Height          =   285
       Left            =   3840
       TabIndex        =   4
       Top             =   240
       Width           =   3615
    End
-   Begin VB.TextBox txtSet 
+   Begin VB.TextBox txtSet
       Height          =   1815
       Left            =   120
       TabIndex        =   3
       Top             =   1320
       Width           =   3255
    End
-   Begin VB.Label Label3 
+   Begin VB.Label Label3
       Caption         =   "Your system variables are:"
       Height          =   255
       Left            =   120
@@ -50,7 +50,7 @@ Begin VB.Form frmMain
       Top             =   960
       Width           =   3495
    End
-   Begin VB.Label Label2 
+   Begin VB.Label Label2
       Caption         =   "Your Windows NT/2000/XP/2003 Product Key is:"
       Height          =   255
       Left            =   120
@@ -58,7 +58,7 @@ Begin VB.Form frmMain
       Top             =   600
       Width           =   3735
    End
-   Begin VB.Label Label1 
+   Begin VB.Label Label1
       Caption         =   "Your Windows 95/98/ME Product Key Is:"
       Height          =   255
       Left            =   120
@@ -66,36 +66,36 @@ Begin VB.Form frmMain
       Top             =   240
       Width           =   3015
    End
-   Begin VB.Menu winspy 
+   Begin VB.Menu winspy
       Caption         =   "&WinSpy"
-      Begin VB.Menu run 
+      Begin VB.Menu run
          Caption         =   "&Run..."
       End
-      Begin VB.Menu browse 
+      Begin VB.Menu browse
          Caption         =   "&Browse..."
       End
-      Begin VB.Menu cpanel 
+      Begin VB.Menu cpanel
          Caption         =   "Launch &Control Panel"
       End
-      Begin VB.Menu telnet 
+      Begin VB.Menu telnet
          Caption         =   "Run &Telnet"
       End
-      Begin VB.Menu exit 
+      Begin VB.Menu exit
          Caption         =   "&Exit"
       End
    End
-   Begin VB.Menu sem 
+   Begin VB.Menu sem
       Caption         =   "&Silent Echoes Media"
-      Begin VB.Menu soft 
+      Begin VB.Menu soft
          Caption         =   "Get More &Software..."
       End
-      Begin VB.Menu site 
+      Begin VB.Menu site
          Caption         =   "&Web Site"
       End
    End
-   Begin VB.Menu help 
+   Begin VB.Menu help
       Caption         =   "&Help"
-      Begin VB.Menu contents 
+      Begin VB.Menu contents
          Caption         =   "&Contents..."
       End
    End
@@ -143,7 +143,7 @@ Const KEY_EXECUTE = KEY_READ
 Const KEY_ALL_ACCESS = KEY_QUERY_VALUE + KEY_SET_VALUE + _
                        KEY_CREATE_SUB_KEY + KEY_ENUMERATE_SUB_KEYS + _
                        KEY_NOTIFY + KEY_CREATE_LINK + READ_CONTROL
-                     
+
 ' Reg Key ROOT Types...
 Const HKEY_CLASSES_ROOT = &H80000000
 Const HKEY_CURRENT_USER = &H80000001
@@ -176,15 +176,15 @@ End Type
 
 Sub LoadResStrings(frm As Form)
   On Error Resume Next
-  
+
   Dim ctl As Control
   Dim obj As Object
-  
+
   'set the form's caption
   If IsNumeric(frm.Tag) Then
     frm.Caption = LoadResString(CInt(frm.Tag))
   End If
-  
+
   'set the controls' captions using the caption
   'property for menu items and the Tag property
   'for all other controls
@@ -248,7 +248,7 @@ Public Function UpdateKey(KeyRoot As Long, KeyName As String, SubKeyName As Stri
     Dim hKey As Long                                    ' Handle To A Registry Key
     Dim hDepth As Long                                  '
     Dim lpAttr As SECURITY_ATTRIBUTES                   ' Registry Security Type
-    
+
     lpAttr.nLength = 50                                 ' Set Security Attributes To Defaults...
     lpAttr.lpSecurityDescriptor = 0                     ' ...
     lpAttr.bInheritHandle = True                        ' ...
@@ -260,25 +260,25 @@ Public Function UpdateKey(KeyRoot As Long, KeyName As String, SubKeyName As Stri
                         0, REG_SZ, _
                         REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, lpAttr, _
                         hKey, hDepth)                   ' Create/Open //KeyRoot//KeyName
-    
+
     If (rc <> ERROR_SUCCESS) Then GoTo CreateKeyError   ' Handle Errors...
-    
+
     '------------------------------------------------------------
     '- Create/Modify Key Value...
     '------------------------------------------------------------
     If (SubKeyValue = "") Then SubKeyValue = " "        ' A Space Is Needed For RegSetValueEx() To Work...
-    
+
     ' Create/Modify Key Value
     rc = RegSetValueEx(hKey, SubKeyName, _
                        0, REG_SZ, _
                        SubKeyValue, LenB(StrConv(SubKeyValue, vbFromUnicode)))
-                       
+
     If (rc <> ERROR_SUCCESS) Then GoTo CreateKeyError   ' Handle Error
     '------------------------------------------------------------
     '- Close Registry Key...
     '------------------------------------------------------------
     rc = RegCloseKey(hKey)                              ' Close Key
-    
+
     UpdateKey = True                                    ' Return Success
     Exit Function                                       ' Exit
 CreateKeyError:
@@ -298,24 +298,24 @@ Public Function GetKeyValue(KeyRoot As Long, KeyName As String, SubKeyRef As Str
     Dim lKeyValType As Long                                 ' Data Type Of A Registry Key
     Dim tmpVal As String                                    ' Tempory Storage For A Registry Key Value
     Dim KeyValSize As Long                                  ' Size Of Registry Key Variable
-    
+
     ' Open RegKey Under KeyRoot {HKEY_LOCAL_MACHINE...}
     '------------------------------------------------------------
     rc = RegOpenKeyEx(KeyRoot, KeyName, 0, KEY_ALL_ACCESS, hKey) ' Open Registry Key
-    
+
     If (rc <> ERROR_SUCCESS) Then GoTo GetKeyError          ' Handle Error...
-    
+
     tmpVal = String$(1024, 0)                             ' Allocate Variable Space
     KeyValSize = 1024                                       ' Mark Variable Size
-    
+
     '------------------------------------------------------------
     ' Retrieve Registry Key Value...
     '------------------------------------------------------------
     rc = RegQueryValueEx(hKey, SubKeyRef, 0, _
                          lKeyValType, tmpVal, KeyValSize)    ' Get/Create Key Value
-                        
+
     If (rc <> ERROR_SUCCESS) Then GoTo GetKeyError          ' Handle Errors
-      
+
     tmpVal = Left$(tmpVal, InStr(tmpVal, Chr(0)) - 1)
 
     '------------------------------------------------------------
@@ -330,11 +330,11 @@ Public Function GetKeyValue(KeyRoot As Long, KeyName As String, SubKeyRef As Str
         Next
         sKeyVal = Format$("&h" + sKeyVal)                     ' Convert Double Word To String
     End Select
-    
+
     GetKeyValue = sKeyVal                                   ' Return Value
     rc = RegCloseKey(hKey)                                  ' Close Registry Key
     Exit Function                                           ' Exit
-    
+
 GetKeyError:    ' Cleanup After An Error Has Occured...
     GetKeyValue = vbNullString                              ' Set Return Val To Empty String
     rc = RegCloseKey(hKey)                                  ' Close Registry Key

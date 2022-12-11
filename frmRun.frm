@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
-Begin VB.Form frmRun 
+Begin VB.Form frmRun
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Run..."
    ClientHeight    =   1095
@@ -14,7 +14,7 @@ Begin VB.Form frmRun
    ScaleHeight     =   1095
    ScaleWidth      =   6030
    ShowInTaskbar   =   0   'False
-   Begin MSComDlg.CommonDialog CommonDialog1 
+   Begin MSComDlg.CommonDialog CommonDialog1
       Left            =   120
       Top             =   600
       _ExtentX        =   847
@@ -25,7 +25,7 @@ Begin VB.Form frmRun
       FileName        =   "*.exe"
       Filter          =   "Executable (*.exe)"
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Browse..."
       Height          =   375
       Left            =   2760
@@ -33,14 +33,14 @@ Begin VB.Form frmRun
       Top             =   600
       Width           =   1815
    End
-   Begin VB.TextBox txtFile 
+   Begin VB.TextBox txtFile
       Height          =   285
       Left            =   120
       TabIndex        =   2
       Top             =   120
       Width           =   4455
    End
-   Begin VB.CommandButton CancelButton 
+   Begin VB.CommandButton CancelButton
       Caption         =   "Cancel"
       Height          =   375
       Left            =   4680
@@ -48,7 +48,7 @@ Begin VB.Form frmRun
       Top             =   600
       Width           =   1215
    End
-   Begin VB.CommandButton OKButton 
+   Begin VB.CommandButton OKButton
       Caption         =   "OK"
       Height          =   375
       Left            =   4680

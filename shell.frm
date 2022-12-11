@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmShell 
+Begin VB.Form frmShell
    BackColor       =   &H80000001&
    BorderStyle     =   0  'None
    Caption         =   "Form1"
@@ -12,7 +12,7 @@ Begin VB.Form frmShell
    ScaleHeight     =   5835
    ScaleWidth      =   8250
    ShowInTaskbar   =   0   'False
-   Begin VB.CommandButton Command2 
+   Begin VB.CommandButton Command2
       Caption         =   "Stop"
       Height          =   375
       Left            =   120
@@ -20,9 +20,9 @@ Begin VB.Form frmShell
       Top             =   120
       Width           =   735
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Turn Off"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0
@@ -38,9 +38,9 @@ Begin VB.Form frmShell
       Top             =   4080
       Width           =   2175
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Media"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0
@@ -56,9 +56,9 @@ Begin VB.Form frmShell
       Top             =   2280
       Width           =   2175
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Games"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0
@@ -74,9 +74,9 @@ Begin VB.Form frmShell
       Top             =   600
       Width           =   2175
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Work"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0
@@ -92,9 +92,9 @@ Begin VB.Form frmShell
       Top             =   4080
       Width           =   2175
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Internet"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0
@@ -110,9 +110,9 @@ Begin VB.Form frmShell
       Top             =   2280
       Width           =   2175
    End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Change"
-      BeginProperty Font 
+      BeginProperty Font
          Name            =   "MS Sans Serif"
          Size            =   24
          Charset         =   0

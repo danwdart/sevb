@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmBrowse 
+Begin VB.Form frmBrowse
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Browse..."
    ClientHeight    =   1020
@@ -12,7 +12,7 @@ Begin VB.Form frmBrowse
    MinButton       =   0   'False
    ScaleHeight     =   1020
    ScaleWidth      =   6030
-   Begin VB.CommandButton OKButton 
+   Begin VB.CommandButton OKButton
       Caption         =   "OK"
       Height          =   375
       Left            =   4680
@@ -20,7 +20,7 @@ Begin VB.Form frmBrowse
       Top             =   120
       Width           =   1215
    End
-   Begin VB.CommandButton CancelButton 
+   Begin VB.CommandButton CancelButton
       Caption         =   "Cancel"
       Height          =   375
       Left            =   4680
@@ -28,7 +28,7 @@ Begin VB.Form frmBrowse
       Top             =   600
       Width           =   1215
    End
-   Begin VB.TextBox txtFile 
+   Begin VB.TextBox txtFile
       Height          =   285
       Left            =   120
       TabIndex        =   0
